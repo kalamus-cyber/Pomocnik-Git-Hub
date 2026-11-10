@@ -1,0 +1,96 @@
+POMOCNIK GITHUB — KUBUNTU / UBUNTU / KDE / KATE
+WERSJA 1.1 (10.11.2026)
+==============================================
+
+DO CZEGO SŁUŻY
+--------------
+Graficzny program w języku polskim do obsługi projektów GitHub.
+Działa na Kubuntu/Ubuntu, a także na Fedorze (jeżeli są Git, Python 3
+oraz Tkinter). Możesz używać go razem z Kate i FreeCAD.
+
+TRZY GŁÓWNE FUNKCJE
+------------------
+1. POBIERZ NOWY — wklej adres GitHuba; program sklonuje projekt do
+   ~/Projekty_Codex lub wskazanego katalogu. Nie zastępuje istniejących folderów.
+2. WYŚLIJ NOWY — wskaż folder na komputerze i URL NOWEGO PUSTEGO
+   repozytorium na GitHubie. Wybierz pliki, zatwierdź i wyślij.
+3. SYNCHRONIZUJ — pobieraj (Pull) lub wysyłaj (Commit + Push) zmiany.
+   W tej zakładce możesz również otworzyć projekt w Kate.
+
+INSTALACJA NA KUBUNTU / UBUNTU
+-----------------------------
+1. Rozpakuj ZIP, otwórz terminal w rozpakowanym katalogu.
+2. Uruchom:
+
+       bash install.sh
+
+3. Jeżeli brakuje biblioteki Tkinter, zainstaluj:
+
+       sudo apt install python3-tk
+
+   Jeżeli brakuje Git albo Pythona, na Kubuntu/Ubuntu można doinstalować:
+
+       sudo apt install git python3 python3-tk
+
+4. Otwórz menu KDE i wyszukaj: Pomocnik GitHub.
+
+Instalacja nie wymaga sudo. Program jest instalowany wyłącznie
+w katalogu użytkownika (~/.local). NIE usuwa projektów ani historii Git.
+
+AKTUALIZACJA Z WERSJI 1.0
+-------------------------
+Jeżeli masz już działającą wersję z paczki "Pomocnik_GitHub_Fedora_v1.0",
+nie odinstalowuj jej. Po prostu uruchom "bash install.sh" z NOWEJ paczki.
+Nowy instalator nadpisze tylko pliki samego programu w ~/.local;
+projekty w ~/Projekty_Codex i repozytoria Git pozostaną nietknięte.
+Skrót w menu zachowa nazwę "Pomocnik GitHub" — nie utworzy się duplikat.
+
+JAK WYSŁAĆ NOWY PROJEKT (BEZ TERMINALA)
+-------------------------------------
+A. Na https://github.com/new utwórz repozytorium (np. Private).
+   Wyłącz dodawanie README; nie dodawaj .gitignore ani licencji.
+B. Otwórz Pomocnik GitHub → "Wyślij nowy".
+C. Wybierz folder na komputerze, wklej adres nowego repozytorium,
+   przejrzyj pliki i zatwierdź ich przesłanie.
+
+JAK PRACOWAĆ NA DWÓCH KOMPUTERACH
+--------------------------------
+Przed pracą: "Synchronizuj" → "Pobierz zmiany".
+Po pracy:    "Synchronizuj" → "Zatwierdź i wyślij".
+
+BEZPIECZEŃSTWO I OGRANICZENIA
+-----------------------------
+- Nie stosuje push --force, reset --hard ani automatycznego merge.
+- Pull jest wykonywany w trybie --ff-only, a przy konfliktach
+  program zatrzyma operację, zamiast nadpisywać historię.
+- Klonowanie nie nadpisuje już istniejącego katalogu.
+- Przed Commit i Push pokazuje wybrane pliki i prosi o potwierdzenie.
+- Zwykle odznacza pliki mogące zawierać sekrety i kopie FreeCAD
+  (.FCBak); pliki już dodane do indeksu Git również będą uwzględnione.
+- Ostrzega przed dużymi plikami i blokuje pliki >= 100 MiB.
+- Nie przechowuje tokenów ani haseł i nie tworzy repozytorium przez API.
+- Repozytorium na GitHubie musisz najpierw utworzyć samodzielnie.
+- Nie konfiguruje Git LFS i nie rozwiązuje konfliktów Git.
+- Nie wysyłaj na GitHub haseł, kluczy ani innych danych poufnych.
+
+ZAWARTOŚĆ PACZKI
+----------------
+pomocnik_github.py  — kod programu
+git_askpass.py     — okno uwierzytelniania Git
+install.sh         — instalacja/aktualizacja w katalogu użytkownika
+uninstall.sh       — usunięcie aplikacji (nigdy projektów)
+pomocnik-github.svg — ikona aplikacji
+PRZECZYTAJ.txt     — ten dokument
+
+ODINSTALOWANIE
+--------------
+Otwórz terminal w rozpakowanej paczce, wpisz: bash uninstall.sh
+Usunie to wyłącznie aplikację i jej skrót. Nie usuwa projektów.
+
+UWAGI O ZMIANACH WERSJI 1.1
+--------------------------
+- Poprawione nazwy: Kubuntu/Ubuntu zamiast sugerowania samej Fedory.
+- Instalator sam rozpoznaje rodzinę systemu i podaje apt albo dnf.
+- Poprawione opisy katalogów w oknie programu.
+- Ta sama ścieżka instalacji, ten sam skrót KDE — bez duplikatów.
+- Brak zmian w mechanice Git działającej w wersji 1.0.
